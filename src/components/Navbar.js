@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./textlogo.svg";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import About from "./About";
 export default function Navbar(props) {
   return (
@@ -9,10 +9,10 @@ export default function Navbar(props) {
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
     >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <a className="navbar-brand" href="">
           <img src={logo} alt="Bootstrap" width="30" height="24" />
           {props.title}
-        </Link>
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -27,11 +27,11 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <a className="nav-link active" aria-current="page" href="">
                 Home
-              </Link>
+              </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link " to="/about">
                 {props.aboutText}
               </Link>
@@ -40,9 +40,9 @@ export default function Navbar(props) {
               <Link className="nav-link " to="/contact">
                 Contact
               </Link>
-            </li>
+            </li> */}
           </ul>
-          <form className="d-flex" role="search">
+          {/* <form className="d-flex" role="search">
             <input
               className="form-control me-2"
               type="search"
@@ -52,65 +52,8 @@ export default function Navbar(props) {
             <button className="btn btn-outline-success" type="submit">
               Search
             </button>
-          </form>
-          {/* <div className="btn-group color-modes mx-3" role="group">
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={props.toggleNewMode}
-            >
-              Blue
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={props.toggleNewMode}
-            >
-              grey
-            </button>
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={props.toggleNewMode}
-            >
-              green
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={props.toggleNewMode}
-            >
-              red
-            </button>
-            <button
-              type="button"
-              className="btn btn-warning"
-              onClick={props.toggleNewMode}
-            >
-              Yellow
-            </button>
-            <button
-              type="button"
-              className="btn btn-info"
-              onClick={props.toggleNewMode}
-            >
-              Info
-            </button>
-            <button
-              type="button"
-              className="btn btn-light"
-              onClick={props.toggleNewMode}
-            >
-              Light
-            </button>
-            <button
-              type="button"
-              className="btn btn-dark"
-              onClick={props.toggleNewMode}
-            >
-              Dark
-            </button>
-          </div> */}
+          </form> */}
+
           <div
             className={`form-check form-switch mx-3 text-${
               props.mode === "light" ? "dark" : "light"
