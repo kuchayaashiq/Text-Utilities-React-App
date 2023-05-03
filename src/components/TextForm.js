@@ -69,22 +69,12 @@ export default function TextForm(props) {
   const [text, setText] = useState("");
   //   text = "new text"; // wrong way to set text
   //   setText("new text"); // correct way to set text
-  const countWords = (str) => {
-    let words;
-    if (text === "") {
-      words = 0;
-    } else {
-      words = str.trim().split(/\s+/).length;
-    }
-    return words;
-  };
-
   return (
     <>
       <div
         className="container my-3"
         style={{
-          color: props.mode === "dark" ? "white" : "black",
+          color: props.txtColor,
         }}
       >
         <h2>{props.heading}</h2>
@@ -94,62 +84,95 @@ export default function TextForm(props) {
             value={text}
             onChange={handleOnChange}
             style={{
-              backgroundColor: props.mode === "dark" ? "#0d2736" : "white",
-              color: props.mode === "dark" ? "white" : "black",
+              backgroundColor: props.bgColor,
+              color: props.txtColor,
             }}
             placeholder="Enter your text here"
             id="textBox"
             rows="8"
           ></textarea>
         </div>
-        <button disabled={text.length === 0} className="btn btn-primary mx-1" onClick={handleUpperCase}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1 border border-dark"
+          onClick={handleUpperCase}
+        >
           UPPER CASE
         </button>
-        <button disabled={text.length === 0} className="btn btn-success mx-1" onClick={handleLowerCase}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success mx-1 my-1 border border-dark"
+          onClick={handleLowerCase}
+        >
           lower Case
         </button>
-        <button disabled={text.length === 0} className="btn btn-success mx-1" onClick={handleCaptilizeCase}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success mx-1 my-1 border border-dark"
+          onClick={handleCaptilizeCase}
+        >
           Captilize Case
         </button>
-        <button disabled={text.length === 0} className="btn btn-success mx-1" onClick={handleAlternateCase}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success mx-1 my-1 border border-dark"
+          onClick={handleAlternateCase}
+        >
           aLtErNaTe cAsE
         </button>
-        <button disabled={text.length === 0} className="btn btn-success mx-1" onClick={handleSentenceCase}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success mx-1 my-1 border border-dark"
+          onClick={handleSentenceCase}
+        >
           SentenceC case
         </button>
-        <button disabled={text.length === 0} className="btn btn-success mx-1" onClick={handleCopy}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success mx-1 my-1 border border-dark"
+          onClick={handleCopy}
+        >
           Copy
         </button>
         <button
           disabled={text.length === 0}
-          className="btn btn-success mx-1 my-1"
+          className="btn btn-success mx-1 my-1 border border-dark"
           onClick={handleExtraSpaces}
         >
           Remove Extra Spaces
         </button>
-        <button disabled={text.length === 0} className="btn btn-danger mx-1" onClick={handleClear}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-danger mx-1 my-1 border border-dark"
+          onClick={handleClear}
+        >
           Clear
         </button>
       </div>
       <div
         className="container my-3"
         style={{
-          color: props.mode === "dark" ? "white" : "black",
+          color: props.txtColor,
         }}
       >
         <h2>Summary of your text</h2>
         <p>
-          <b>words :</b> {countWords(text)} |<b> Characters :</b> {text.length}{" "}
-          <br />
+          <b>words :</b>{" "}
+          {
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          |<b> Characters :</b> {text.length} <br />
           <b>Approximate time to read the text : </b>
-          {0.008 * text.split(" ").length} Minutes
+          {0.008 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes
         </p>
         <h2>Preview</h2>
-        <p>
-          {text.length > 0
-            ? text
-            : "Enter Something in above textbox to preview it here!"}
-        </p>
+        <p>{text.length > 0 ? text : "Nothing to Preview"}</p>
       </div>
     </>
   );

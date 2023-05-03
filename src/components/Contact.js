@@ -5,7 +5,7 @@ export default function Contact(props) {
     <div
       className="container"
       style={{
-        color: props.mode === "dark" ? "white" : "black",
+        color: props.txtColor,
       }}
     >
       {/* <!--Section: Contact v.2--> */}
@@ -56,6 +56,7 @@ export default function Contact(props) {
                       id="email"
                       name="email"
                       className="form-control"
+                      placeholder="name@example.com"
                     />
                     <label htmlFor="email" className="">
                       Your email
@@ -96,7 +97,7 @@ export default function Contact(props) {
                       rows="2"
                       className="form-control md-textarea"
                     ></textarea>
-                    <label for="message">Your message</label>
+                    <label htmlFor="message">Your message</label>
                   </div>
                 </div>
               </div>
@@ -105,7 +106,7 @@ export default function Contact(props) {
 
             <div className="text-center text-md-left">
               <a
-                className="btn btn-primary"
+                className="btn btn-primary border border-dark"
                 onclick="document.getElementById('contact-form').submit();"
                 href="/"
               >
